@@ -1,14 +1,14 @@
-# ![logo](https://github.com/amymor/Dimension-Calc/assets/54497554/d3e5c2d8-777d-4d36-bb14-ef0417881958) Dimension Calc 
+# ![logo](https://github.com/amymor/DCalc/assets/54497554/d3e5c2d8-777d-4d36-bb14-ef0417881958) DCalc (Dimension Calculator)
 ### A portable app (size=~50KB) to calculate the correct width or height based on aspect ratio. 
 
 ## Screenshots
 ### v1.1
-![screenv1 1](https://github.com/amymor/Dimension-Calc/assets/54497554/b9c4a6df-c706-4e3c-8469-befd830bcbee)
+![screenv1 1](https://github.com/amymor/DCalc/assets/54497554/b9c4a6df-c706-4e3c-8469-befd830bcbee)
 
 <details><summary>Old versions</summary>
   
 ### v1.0
-  ![screenv1 0](https://github.com/amymor/Dimension-Calc/assets/54497554/7e0735c1-c4d7-417e-b0d1-f6553df0f16f)
+  ![screenv1 0](https://github.com/amymor/DCalc/assets/54497554/7e0735c1-c4d7-417e-b0d1-f6553df0f16f)
 
   
 </details>
@@ -21,7 +21,7 @@
 5. Done! The app will show you the correct width or height.
 
 ## Downlaod
-[Downlaod latest version here](https://github.com/amymor/Dimension-Calc/releases/latest)
+[Downlaod latest version here](https://github.com/amymor/DCalc/releases/latest)
 
 ## To-Do List
 - [x] ~~Auto select the "**Pixel width**" box on startup.~~
