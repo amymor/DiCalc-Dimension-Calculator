@@ -5,7 +5,7 @@
 ### v1.1
 ![screenv1 1](https://github.com/amymor/Dimension-Calc/assets/54497554/b9c4a6df-c706-4e3c-8469-befd830bcbee)
 
-<details><summary>vOld versions</summary>
+<details><summary>Old versions</summary>
   
 ### v1.0
   ![screenv1 0](https://github.com/amymor/Dimension-Calc/assets/54497554/7e0735c1-c4d7-417e-b0d1-f6553df0f16f)
