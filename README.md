@@ -15,15 +15,15 @@ A simple and portable app (size=~50KB) to determine the correct width or height 
 [Downlaod latest version here](https://github.com/amymor/Dimension-Calc/releases/latest)
 
 ## To-Do List
-1. Auto select the "**Pixel width**" box on startup.
-2. Add a button to open github app web page to check for updates.
-3. A bit better UI and colors.
-4. Auto round the result instead of showing decimals.
+1. ~~Auto select the "**Pixel width**" box on startup.~~ 
+2. ~~Add a button to open GitHub app web page to check for updates.~~
+3. ~~A bit better UI and colors.~~
+4. ~~Auto round the result instead of showing decimals.~~
 5. Add a button to show decimals.
 6. Add an option to make the window topmost.
 7. Add command-line parameters.
 8. Add an option to auto calculate.
-9. Add up and down buttons to TextBox (change TextBox to NumericUpDown).
+9. ~~Add up and down buttons to TextBox (change TextBox to NumericUpDown).~~
 10. Store some settings like default aspect ratio in an ini file.
 11. An option to auto-copy the result to clipboard.
 12. A button before each numeric field to copy the value.
