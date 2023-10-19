@@ -60,4 +60,4 @@ the blow result will be copied to the clipboard:
 - [x] ~~Add up and down buttons to TextBox (change TextBox to NumericUpDown).~~
 - [ ] Store some settings like default aspect ratio in an ini file.
 - [x] ~~An option to auto-copy the result to clipboard.~~
-- [ ] A button before each numeric field to copy the value.
+- [ ] A button before each numberic field to copy the value.
