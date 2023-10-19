@@ -24,4 +24,6 @@ A simple and portable app (size=~50KB) to determine the correct width or height 
 7. Add command-line parameters.
 8. Add an option to auto calculate.
 9. Add up and down buttons to TextBox (change TextBox to NumericUpDown).
-10. Store some settings like default aspect ratio to an ini file.
+10. Store some settings like default aspect ratio in an ini file.
+11. An option to auto-copy the result to clipboard.
+12. A button before each numeric field to copy the value.
