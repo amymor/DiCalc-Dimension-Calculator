@@ -12,7 +12,7 @@ A simple and portable app (size=~50KB) to determine the correct width or height 
 5. Done! The app will show you the correct width or height.
 
 ## Downlaod
-Downlaod latest version here
+[Downlaod latest version here](https://github.com/amymor/Dimension-Calc/releases/latest)
 
 ## To-Do List
 1. Auto select the "**Pixel width**" box on startup.
