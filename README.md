@@ -2,11 +2,13 @@
 ### A portable app (size=~50KB) to calculate the correct width or height based on aspect ratio. 
 
 ## Screenshots
-### v1.1
-![screenv1 1](https://github.com/amymor/DCalc/assets/54497554/b9c4a6df-c706-4e3c-8469-befd830bcbee)
+![screen1 2](https://github.com/amymor/DCalc/assets/54497554/fb73c861-8845-4e6c-87d1-ceb7c0ecfad6)
+
 
 <details><summary>Old versions</summary>
-  
+
+### v1.1
+![screenv1 1](https://github.com/amymor/DCalc/assets/54497554/b9c4a6df-c706-4e3c-8469-befd830bcbee)
 ### v1.0
   ![screenv1 0](https://github.com/amymor/DCalc/assets/54497554/7e0735c1-c4d7-417e-b0d1-f6553df0f16f)
 
@@ -14,11 +16,34 @@
 </details>
 
 ## How to use
+### DCalc (UI)
+#### Metdod A:
 1. Open the app.
 2. Enter your desired aspect ratio (default is 16:9).
 3. Enter "**Pixel width**" only or "**Pixel height**" only.
-4. Press "**Calculate**".
+4. Press Enter.
 5. Done! The app will show you the correct width or height.
+#### Metdod B:
+1. Open the app.
+2. Enter your desired aspect ratio (default is 16:9).
+3. Drag and drop an image file to app window.
+5. Done! The app will show you the correct width or height and also auto-copy it to the clipboard.
+
+### DCalc-CL (Command line)
+Just pass the image file as parameter, it will calculate the correct diemnsion and auto-copy it to the clipboard.
+
+e.g:
+
+`DCalc-CL.exe "test-1920-1440.jpg"`
+
+the blow result will be copied to the clipboard:
+
+`1920 1080`
+> **Note**
+> The default aspect ratio for **DCalc-CL** is 16:9, but if the **DCalc-Cl.ini** exist in same folder you can change the default aspect ratio, e.g:
+> 
+> `AspectRatio=4:3`
+
 
 ## Downlaod
 [Downlaod latest version here](https://github.com/amymor/DCalc/releases/latest)
@@ -30,9 +55,9 @@
 - [x] ~~Auto round the result instead of showing decimals.~~
 - [ ] Add a button to show decimals.
 - [ ] Add an option to make the window topmost.
-- [ ] Add command-line parameters.
-- [ ] Add an option to auto calculate.
+- [x] ~~Add command-line parameters.~~
+- [x] ~~Add an option to auto calculate.~~
 - [x] ~~Add up and down buttons to TextBox (change TextBox to NumericUpDown).~~
 - [ ] Store some settings like default aspect ratio in an ini file.
-- [ ] An option to auto-copy the result to clipboard.
+- [x] ~~An option to auto-copy the result to clipboard.~~
 - [ ] A button before each numeric field to copy the value.
