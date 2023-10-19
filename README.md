@@ -20,6 +20,8 @@ A simple and portable app (size=~50KB) to determine the correct width or height 
 3. A bit better UI and colors.
 4. Auto round the result instead of showing decimals.
 5. Add a button to show decimals.
+6. Add an option to make the window topmost.
+7. Add command-line parameters.
 
 ## LICENSE
 MIT License
