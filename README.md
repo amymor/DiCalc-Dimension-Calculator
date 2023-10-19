@@ -1,8 +1,17 @@
 # ![logo](https://github.com/amymor/Dimension-Calc/assets/54497554/d3e5c2d8-777d-4d36-bb14-ef0417881958) Dimension Calc 
-A simple and portable app (size=~50KB) to determine the correct width or height based on aspect ratio.
+### A portable app (size=~50KB) to calculate the correct width or height based on aspect ratio. 
 
-## Screenshot
-![screenv1 0](https://github.com/amymor/Dimension-Calc/assets/54497554/7e0735c1-c4d7-417e-b0d1-f6553df0f16f)
+## Screenshots
+### v1.1
+![screenv1 1](https://github.com/amymor/Dimension-Calc/assets/54497554/b9c4a6df-c706-4e3c-8469-befd830bcbee)
+
+<details><summary>vOld versions</summary>
+  
+### v1.0
+  ![screenv1 0](https://github.com/amymor/Dimension-Calc/assets/54497554/7e0735c1-c4d7-417e-b0d1-f6553df0f16f)
+
+  
+</details>
 
 ## How to use
 1. Open the app.
@@ -15,15 +24,15 @@ A simple and portable app (size=~50KB) to determine the correct width or height 
 [Downlaod latest version here](https://github.com/amymor/Dimension-Calc/releases/latest)
 
 ## To-Do List
-1. ~~Auto select the "**Pixel width**" box on startup.~~ 
-2. ~~Add a button to open GitHub app web page to check for updates.~~
-3. ~~A bit better UI and colors.~~
-4. ~~Auto round the result instead of showing decimals.~~
-5. Add a button to show decimals.
-6. Add an option to make the window topmost.
-7. Add command-line parameters.
-8. Add an option to auto calculate.
-9. ~~Add up and down buttons to TextBox (change TextBox to NumericUpDown).~~
-10. Store some settings like default aspect ratio in an ini file.
-11. An option to auto-copy the result to clipboard.
-12. A button before each numeric field to copy the value.
+- [x] ~~Auto select the "**Pixel width**" box on startup.~~
+- [x] ~~Add a button to open GitHub app web page to check for updates.~~
+- [x] ~~A bit better UI and colors.~~
+- [x] ~~Auto round the result instead of showing decimals.~~
+- [ ] Add a button to show decimals.
+- [ ] Add an option to make the window topmost.
+- [ ] Add command-line parameters.
+- [ ] Add an option to auto calculate.
+- [x] ~~Add up and down buttons to TextBox (change TextBox to NumericUpDown).~~
+- [ ] Store some settings like default aspect ratio in an ini file.
+- [ ] An option to auto-copy the result to clipboard.
+- [ ] A button before each numeric field to copy the value.
