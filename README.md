@@ -23,4 +23,5 @@ A simple and portable app (size=~50KB) to determine the correct width or height 
 6. Add an option to make the window topmost.
 7. Add command-line parameters.
 8. Add an option to auto calculate.
-9. Add up and down buttons to TextBox.
+9. Add up and down buttons to TextBox (change TextBox to NumericUpDown).
+10. Store some settings like default aspect ratio to an ini file.
