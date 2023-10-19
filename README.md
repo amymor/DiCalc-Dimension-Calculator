@@ -22,8 +22,3 @@ A simple and portable app (size=~50KB) to determine the correct width or height 
 5. Add a button to show decimals.
 6. Add an option to make the window topmost.
 7. Add command-line parameters.
-
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
