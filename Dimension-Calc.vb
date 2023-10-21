@@ -39,7 +39,7 @@ Public Class Form1
 		Me.ControlBox = False
 		Me.Size = New Size(220, 190)
 		' Me.Text = "=)"
-		Me.Text = "DCalc - amymor(OgomnamO)"
+		Me.Text = "DiCalc - amymor OgomnamO"
         Me.BackColor = Color.FromArgb(60,75,66)
         ' Me.BackColor = Color.FromArgb(60,66,75)
         Me.ForeColor = Color.FromArgb(235,235,235) ' Set text color (for Labels and Buttons if not set already)
