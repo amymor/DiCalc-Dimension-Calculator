@@ -1,16 +1,16 @@
-# ![logo](https://github.com/amymor/Dimension-Calculator-DiCalc/assets/54497554/d3e5c2d8-777d-4d36-bb14-ef0417881958) DiCalc (Dimension Calculator)
+# ![logo](https://github.com/amymor/DiCalc-Dimension-Calculator/assets/54497554/d3e5c2d8-777d-4d36-bb14-ef0417881958) DiCalc (Dimension Calculator)
 ### A portable app (size=~50KB) to calculate the correct width or height based on aspect ratio. 
 
 ## Screenshots
-![screen1 2](https://github.com/amymor/Dimension-Calculator-DiCalc/assets/54497554/fb73c861-8845-4e6c-87d1-ceb7c0ecfad6)
+![screen1 2](https://github.com/amymor/DiCalc-Dimension-Calculator/assets/54497554/fb73c861-8845-4e6c-87d1-ceb7c0ecfad6)
 
 
 <details><summary>Old versions</summary>
 
 ### v1.1
-![screenv1 1](https://github.com/amymor/Dimension-Calculator-DiCalc/assets/54497554/b9c4a6df-c706-4e3c-8469-befd830bcbee)
+![screenv1 1](https://github.com/amymor/DiCalc-Dimension-Calculator/assets/54497554/b9c4a6df-c706-4e3c-8469-befd830bcbee)
 ### v1.0
-  ![screenv1 0](https://github.com/amymor/Dimension-Calculator-DiCalc/assets/54497554/7e0735c1-c4d7-417e-b0d1-f6553df0f16f)
+  ![screenv1 0](https://github.com/amymor/DiCalc-Dimension-Calculator/assets/54497554/7e0735c1-c4d7-417e-b0d1-f6553df0f16f)
 
   
 </details>
@@ -46,7 +46,7 @@ the blow result will be copied to the clipboard:
 
 
 ## Downlaod
-[Downlaod latest version here](https://github.com/amymor/Dimension-Calculator-DiCalc/releases/latest)
+[Downlaod latest version here](https://github.com/amymor/DiCalc-Dimension-Calculator/releases/latest)
 
 ## To-Do List
 - [x] ~~Auto select the "**Pixel width**" box on startup.~~
