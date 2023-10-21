@@ -30,7 +30,7 @@ Module Module1
         Dim height As Integer = image.Height
 
         ' Read aspect ratio from INI file
-        Dim iniFilePath As String = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "Dimension-Calc-CL.ini")
+        Dim iniFilePath As String = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "DiCalc-CL.ini")
         Dim aspectRatio As Double = 16 / 9
         If System.IO.File.Exists(iniFilePath) Then
             Using parser As New TextFieldParser(iniFilePath)
