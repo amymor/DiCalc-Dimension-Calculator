@@ -9,8 +9,8 @@ Public Class Form1
     ' Create TextBoxes
     Private aspectRatio1 As New NumericUpDown()
     Private aspectRatio2 As New NumericUpDown()
-    Private dimension1 As New NumericUpDown()
-    Private dimension2 As New NumericUpDown()
+    Private dimensionW As New NumericUpDown()
+    Private dimensionH As New NumericUpDown()
     ' Create Buttons
     Private calculateButton As New Button()
 	Private closeButton As New Button()
@@ -24,7 +24,7 @@ Public Class Form1
     Private ratioHeightLabel As New Label()
     Private pixelsWidthLabel As New Label()
     Private pixelsHeightLabel As New Label()
-	
+
     Public Sub New()
         ' Set form properties
         ' Enable drag and drop
@@ -44,6 +44,7 @@ Public Class Form1
         ' Me.BackColor = Color.FromArgb(60,66,75)
         Me.ForeColor = Color.FromArgb(235,235,235) ' Set text color (for Labels and Buttons if not set already)
         ' Me.ForeColor = Color.White
+        Me.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath)
  '=================================================================
         ' Initialize Labels
         AspectRatio.Text = "Aspect ratio"
@@ -87,37 +88,37 @@ Public Class Form1
         aspectRatio2.BackColor = Color.FromArgb(54,69,60) ' Set background color
         aspectRatio2.ForeColor = Color.FromArgb(235,235,235) ' Set text color
         
-		dimension1.Location = New Point(30, 80)
-        dimension1.Size = New Size(105, 20)
-        dimension1.Font = New Font("Segoe UI", 14, FontStyle.Bold) ' Set font size
-        dimension1.BackColor = Color.FromArgb(54,69,60) ' Set background color
-        dimension1.ForeColor = Color.FromArgb(235,235,235) ' Set text color
+		dimensionW.Location = New Point(30, 80)
+        dimensionW.Size = New Size(105, 20)
+        dimensionW.Font = New Font("Segoe UI", 14, FontStyle.Bold) ' Set font size
+        dimensionW.BackColor = Color.FromArgb(54,69,60) ' Set background color
+        dimensionW.ForeColor = Color.FromArgb(235,235,235) ' Set text color
         
-		dimension2.Location = New Point(30, 115)
-        dimension2.Size = New Size(105, 20)
-        dimension2.Font = New Font("Segoe UI", 14, FontStyle.Bold) ' Set font size
-        dimension2.BackColor = Color.FromArgb(54,69,60) ' Set background color
-        dimension2.ForeColor = Color.FromArgb(235,235,235) ' Set text color
+		dimensionH.Location = New Point(30, 115)
+        dimensionH.Size = New Size(105, 20)
+        dimensionH.Font = New Font("Segoe UI", 14, FontStyle.Bold) ' Set font size
+        dimensionH.BackColor = Color.FromArgb(54,69,60) ' Set background color
+        dimensionH.ForeColor = Color.FromArgb(235,235,235) ' Set text color
 		
 		' TextBoxes BorderStyle
         aspectRatio1.BorderStyle = BorderStyle.FixedSingle
         aspectRatio2.BorderStyle = BorderStyle.FixedSingle
-        dimension1.BorderStyle = BorderStyle.FixedSingle
-        dimension2.BorderStyle = BorderStyle.FixedSingle
+        dimensionW.BorderStyle = BorderStyle.FixedSingle
+        dimensionH.BorderStyle = BorderStyle.FixedSingle
 		
         ' NumericUpDown colors
         ' aspectRatio1.Controls("UpDownButtons").BackColor = Color.DarkGray
         ' aspectRatio1.Controls("UpDownButtons").ForeColor = Color.White
         ' aspectRatio2.Controls("UpDownButtons").BackColor = Color.DarkGray
         ' aspectRatio2.Controls("UpDownButtons").ForeColor = Color.White
-        ' dimension1.Controls("UpDownButtons").BackColor = Color.DarkGray
-        ' dimension1.Controls("UpDownButtons").ForeColor = Color.White
-        ' dimension2.Controls("UpDownButtons").BackColor = Color.DarkGray
-        ' dimension2.Controls("UpDownButtons").ForeColor = Color.White
+        ' dimensionW.Controls("UpDownButtons").BackColor = Color.DarkGray
+        ' dimensionW.Controls("UpDownButtons").ForeColor = Color.White
+        ' dimensionH.Controls("UpDownButtons").BackColor = Color.DarkGray
+        ' dimensionH.Controls("UpDownButtons").ForeColor = Color.White
 		
         ' maximum value of the data type
-        dimension1.Maximum = 9999999
-        dimension2.Maximum = 9999999
+        dimensionW.Maximum = 9999999
+        dimensionH.Maximum = 9999999
  '=================================================================
         ' Initialize Buttons
         calculateButton.Text = "Calculate"
@@ -174,8 +175,8 @@ Public Class Form1
         ' Add TextBoxes, Labels, and Buttons to Form
         Me.Controls.Add(aspectRatio1)
         Me.Controls.Add(aspectRatio2)
-        Me.Controls.Add(dimension1)
-        Me.Controls.Add(dimension2)
+        Me.Controls.Add(dimensionW)
+        Me.Controls.Add(dimensionH)
         Me.Controls.Add(AspectRatio)
         ' Me.Controls.Add(ratioWidthLabel)
         ' Me.Controls.Add(ratioHeightLabel)
@@ -190,13 +191,13 @@ Public Class Form1
         ' Set 16:9 as default
         aspectRatio1.text = 16
         aspectRatio2.text = 9
-		dimension1.text = ""
-		dimension2.text = ""
-		' dimension1.text = 0
-		' dimension2.text = 0
+		dimensionW.text = ""
+		dimensionH.text = ""
+		' dimensionW.text = 0
+		' dimensionH.text = 0
 
-		' focus to the dimension1 TextBox at startup
-		dimension1.Select()
+		' focus to the dimensionW TextBox at startup
+		dimensionW.Select()
 		
 		toolTip1.SetToolTip(pixelsWidthLabel, "Pixels width")
 		toolTip1.SetToolTip(pixelsHeightLabel, "Pixels height")
@@ -217,8 +218,8 @@ Public Class Form1
 		' Add ValueChanged event handlers to NumericUpDown controls
         AddHandler aspectRatio1.ValueChanged, AddressOf calculateButton_Click
         AddHandler aspectRatio2.ValueChanged, AddressOf calculateButton_Click
-        AddHandler dimension1.ValueChanged, AddressOf calculateButton_Click
-        AddHandler dimension2.ValueChanged, AddressOf calculateButton_Click
+        AddHandler dimensionW.ValueChanged, AddressOf calculateButton_Click
+        AddHandler dimensionH.ValueChanged, AddressOf calculateButton_Click
 
     End Sub
 
@@ -226,22 +227,22 @@ Public Class Form1
         ' Try to parse the text from the TextBoxes to Doubles
         ' Dim aspectRatio1Value As Double
         ' Dim aspectRatio2Value As Double
-        ' Dim dimension1Value As Double
-        ' Dim dimension2Value As Double
+        ' Dim dimensionWValue As Double
+        ' Dim dimensionHValue As Double
 
         ' Check if the TextBoxes are empty and set the corresponding Double variables to zero if they are
         ' If Not Double.TryParse(aspectRatio1.Text, aspectRatio1Value) Then aspectRatio1Value = 0
         ' If Not Double.TryParse(aspectRatio2.Text, aspectRatio2Value) Then aspectRatio2Value = 0
-        ' If Not Double.TryParse(dimension1.Text, dimension1Value) Then dimension1Value = 0
-        ' If Not Double.TryParse(dimension2.Text, dimension2Value) Then dimension2Value = 0
+        ' If Not Double.TryParse(dimensionW.Text, dimensionWValue) Then dimensionWValue = 0
+        ' If Not Double.TryParse(dimensionH.Text, dimensionHValue) Then dimensionHValue = 0
 
         ' Calculate missing dimension
         Dim aspectRatio As Double = aspectRatio1.Value / aspectRatio2.Value
 
-        If dimension1.Text = "" Then
-            dimension1.Text = Math.Round(dimension2.Value * aspectRatio).ToString()
+        If dimensionW.Text = "" Then
+            dimensionW.Text = Math.Round(dimensionH.Value * aspectRatio).ToString()
         Else
-            dimension2.Text = Math.Round(dimension1.Value / aspectRatio).ToString()
+            dimensionH.Text = Math.Round(dimensionW.Value / aspectRatio).ToString()
         End If
     End Sub
 
@@ -276,8 +277,8 @@ Public Class Form1
     Private Sub Form_DragDrop(ByVal sender As Object, ByVal e As DragEventArgs)
         Dim files() As String = CType(e.Data.GetData(DataFormats.FileDrop), String())
 		' Fix
-		dimension1.text = 0
-		dimension2.text = 0
+		dimensionW.text = 0
+		dimensionH.text = 0
 		
         For Each file As String In files
             Dim image As Image = Image.FromFile(file)
@@ -286,23 +287,24 @@ Public Class Form1
 
             ' Calculate missing dimension
             Dim aspectRatio As Double = aspectRatio1.Value / aspectRatio2.Value
+            Dim Image_aspectRatio As Double = width / height
 
-            If height > width Then
-                dimension1.Value = width
-                dimension2.Value = CInt(width / aspectRatio)
+            If Image_aspectRatio < aspectRatio Then
+                dimensionW.Value = width
+                dimensionH.Value = CInt(width / aspectRatio)
             Else
-                dimension1.Value = CInt(height * aspectRatio)
-                dimension2.Value = height
+                dimensionW.Value = CInt(height * aspectRatio)
+                dimensionH.Value = height
             End If
 
             ' Copy the result to clipboard
-            Clipboard.SetText(dimension1.Value.ToString() & " " & dimension2.Value.ToString())
+            Clipboard.SetText(dimensionW.Value.ToString() & " " & dimensionH.Value.ToString())
         Next
     End Sub
 
 
     ' Entry point of the application
-    <STAThread>
+    ' <STAThread>
     Public Shared Sub Main()
         Application.Run(New Form1())
     End Sub

@@ -28,9 +28,10 @@ Module Module1
         Dim image As Image = Image.FromFile(filePath)
         Dim width As Integer = image.Width
         Dim height As Integer = image.Height
+        Dim Image_aspectRatio As Double = width / height
 
         ' Read aspect ratio from INI file
-        Dim iniFilePath As String = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "DiCalc-CL.ini")
+        Dim iniFilePath As String = AppDomain.CurrentDomain.BaseDirectory & "DiCalc-CL.ini"
         Dim aspectRatio As Double = 16 / 9
         If System.IO.File.Exists(iniFilePath) Then
             Using parser As New TextFieldParser(iniFilePath)
@@ -48,18 +49,20 @@ Module Module1
         End If
 
         ' Calculate missing dimension
-        If height > width Then
+        If Image_aspectRatio < aspectRatio Then
             Dim calculatedWidth As Integer = width
             Dim calculatedHeight As Integer = CInt(width / aspectRatio)
 
             ' Copy the result to clipboard
             Clipboard.SetText(calculatedWidth.ToString() & " " & calculatedHeight.ToString())
+            ' Console.WriteLine(calculatedWidth.ToString() & " " & calculatedHeight.ToString())
         Else
             Dim calculatedWidth As Integer = CInt(height * aspectRatio)
             Dim calculatedHeight As Integer = height
 
             ' Copy the result to clipboard
             Clipboard.SetText(calculatedWidth.ToString() & " " & calculatedHeight.ToString())
+            ' Console.WriteLine(calculatedWidth.ToString() & " " & calculatedHeight.ToString())
         End If
     End Sub
 
