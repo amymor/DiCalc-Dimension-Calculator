@@ -2,7 +2,7 @@
 ### A portable app (size=~50KB) to calculate the correct width or height based on aspect ratio. 
 
 ## Screenshots
-![screen1 2](https://github.com/amymor/DiCalc-Dimension-Calculator/assets/54497554/fb73c861-8845-4e6c-87d1-ceb7c0ecfad6)
+![screen1 4](https://github.com/amymor/DiCalc-Dimension-Calculator/assets/54497554/508f2c14-a302-4f91-a98e-a0946efbad88)
 
 
 <details><summary>Old versions</summary>
