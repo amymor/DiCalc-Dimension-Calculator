@@ -21,16 +21,15 @@
 1. Open the app.
 2. Enter your desired aspect ratio (default is 16:9).
 3. Enter "**Pixel width**" only or "**Pixel height**" only.
-4. Press Enter.
-5. Done! The app will show you the correct width or height.
+4. Done! The app will show you the correct width or height and also auto-copy it to the clipboard.
 #### Metdod B:
 1. Open the app.
 2. Enter your desired aspect ratio (default is 16:9).
 3. Drag and drop an image file to app window.
-5. Done! The app will show you the correct width or height and also auto-copy it to the clipboard.
+5. Done! The app will show you the correct width and height and also auto-copy it to the clipboard.
 
 ### DiCalc-CL (Command line)
-Just pass the image file as parameter, it will calculate the correct diemnsion and auto-copy it to the clipboard.
+Just pass the image file as parameter, it will calculate the correct dimension and auto-copy it to the clipboard.
 
 e.g:
 
