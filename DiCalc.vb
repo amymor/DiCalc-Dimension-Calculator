@@ -4,13 +4,69 @@ Imports System.Drawing
 Imports System.IO
 Imports System.Windows.Forms
 
+' =================================================
+ ' Custom NumericUpDown
+Public Class CustomNumericUpDown
+    Inherits NumericUpDown
+
+    Private calculationAction As Action
+
+    Public Sub New(calculationAction As Action)
+        MyBase.New()
+        Me.calculationAction = calculationAction
+    End Sub
+
+    Public Overrides Sub UpButton()
+        MyBase.UpButton()
+        ' Execute the calculation action
+        calculationAction()
+    End Sub
+
+    Public Overrides Sub DownButton()
+        MyBase.DownButton()
+        ' Execute the calculation action
+        calculationAction()
+    End Sub
+End Class
+
+' =================================================
 Public Class Form1
     Inherits Form
     ' Create TextBoxes
-    Private aspectRatio1 As New NumericUpDown()
-    Private aspectRatio2 As New NumericUpDown()
-    Private dimensionW As New NumericUpDown()
-    Private dimensionH As New NumericUpDown()
+	Dim aspectRatio1 As New CustomNumericUpDown(Sub()
+                                                       ' Calculate the new values of the dependent controls
+                                                       Dim aspectRatio As Double = aspectRatio1.Value / aspectRatio2.Value
+                                                       If dimensionH.Text = "" Then
+                                                           dimensionH.Text = Math.Round(dimensionW.Value / aspectRatio).ToString()
+                                                       Else
+                                                           dimensionW.Text = Math.Round(dimensionH.Value * aspectRatio).ToString()
+                                                       End If
+                                                   End Sub)
+	Dim aspectRatio2 As New CustomNumericUpDown(Sub()
+                                                       ' Calculate the new values of the dependent controls
+                                                       Dim aspectRatio As Double = aspectRatio1.Value / aspectRatio2.Value
+                                                       If dimensionW.Text = "" Then
+                                                           dimensionW.Text = Math.Round(dimensionH.Value * aspectRatio).ToString()
+                                                       Else
+                                                           dimensionH.Text = Math.Round(dimensionW.Value / aspectRatio).ToString()
+                                                       End If
+                                                   End Sub)
+	Dim dimensionW As New CustomNumericUpDown(Sub()
+                                                       ' Calculate the new values of the dependent controls
+                                                       Dim aspectRatio As Double = aspectRatio1.Value / aspectRatio2.Value
+                                                       dimensionH.Text = Math.Round(dimensionW.Value / aspectRatio).ToString()
+                                                       Clipboard.SetText(Math.Round(dimensionW.Value / aspectRatio).ToString())
+                                                   End Sub)
+	Dim dimensionH As New CustomNumericUpDown(Sub()
+                                                       ' Calculate the new values of the dependent controls
+                                                       Dim aspectRatio As Double = aspectRatio1.Value / aspectRatio2.Value
+                                                       dimensionW.Text = Math.Round(dimensionH.Value * aspectRatio).ToString()
+                                                       Clipboard.SetText(Math.Round(dimensionH.Value * aspectRatio).ToString())
+                                                   End Sub)
+    ' Private aspectRatio1 As New CustomNumericUpDown()
+    ' Private aspectRatio2 As New CustomNumericUpDown()
+    ' Private dimensionW As New CustomNumericUpDown()
+    ' Private dimensionH As New CustomNumericUpDown()
     ' Create Buttons
     Private calculateButton As New Button()
 	Private closeButton As New Button()
@@ -216,34 +272,59 @@ Public Class Form1
 		AddHandler openWebsiteButton1.Click, AddressOf openWebsiteButton1_Click
 		AddHandler openWebsiteButton2.Click, AddressOf openWebsiteButton2_Click
 		' Add ValueChanged event handlers to NumericUpDown controls
-        AddHandler aspectRatio1.ValueChanged, AddressOf calculateButton_Click
-        AddHandler aspectRatio2.ValueChanged, AddressOf calculateButton_Click
-        AddHandler dimensionW.ValueChanged, AddressOf calculateButton_Click
-        AddHandler dimensionH.ValueChanged, AddressOf calculateButton_Click
+        ' AddHandler aspectRatio1.ValueChanged, AddressOf calculateButton_Click1
+        ' AddHandler aspectRatio2.ValueChanged, AddressOf calculateButton_Click2
+        ' AddHandler dimensionW.ValueChanged, AddressOf calculateButton_ClickW
+        ' AddHandler dimensionH.ValueChanged, AddressOf calculateButton_ClickH
+
+        ' Add KeyDown event handlers to NumericUpDown controls
+        AddHandler aspectRatio1.KeyUp, AddressOf calculateButton_Click1
+        AddHandler aspectRatio2.KeyUp, AddressOf calculateButton_Click2
+        AddHandler dimensionW.KeyUp, AddressOf calculateButton_ClickW
+        AddHandler dimensionH.KeyUp, AddressOf calculateButton_ClickH
+        ' Add Leave event handlers to NumericUpDown controls
+        AddHandler aspectRatio1.Leave, AddressOf calculateButton_Click1
+        AddHandler aspectRatio2.Leave, AddressOf calculateButton_Click2
+        AddHandler dimensionW.Leave, AddressOf calculateButton_ClickW
+        AddHandler dimensionH.Leave, AddressOf calculateButton_ClickH
+
+        ' Add Enter event handler to Form
+        ' AddHandler Me.KeyDown, AddressOf Form_KeyDown
 
     End Sub
 
-    Private Sub calculateButton_Click(ByVal sender As Object, ByVal e As EventArgs)
-        ' Try to parse the text from the TextBoxes to Doubles
-        ' Dim aspectRatio1Value As Double
-        ' Dim aspectRatio2Value As Double
-        ' Dim dimensionWValue As Double
-        ' Dim dimensionHValue As Double
-
-        ' Check if the TextBoxes are empty and set the corresponding Double variables to zero if they are
-        ' If Not Double.TryParse(aspectRatio1.Text, aspectRatio1Value) Then aspectRatio1Value = 0
-        ' If Not Double.TryParse(aspectRatio2.Text, aspectRatio2Value) Then aspectRatio2Value = 0
-        ' If Not Double.TryParse(dimensionW.Text, dimensionWValue) Then dimensionWValue = 0
-        ' If Not Double.TryParse(dimensionH.Text, dimensionHValue) Then dimensionHValue = 0
-
+    Private Sub calculateButton_Click1(ByVal sender As Object, ByVal e As EventArgs)
         ' Calculate missing dimension
         Dim aspectRatio As Double = aspectRatio1.Value / aspectRatio2.Value
+        If dimensionH.Text = "" Then
+            dimensionH.Text = Math.Round(dimensionW.Value / aspectRatio).ToString()
+        Else
+            dimensionW.Text = Math.Round(dimensionH.Value * aspectRatio).ToString()
+        End If
+    End Sub
 
+    Private Sub calculateButton_Click2(ByVal sender As Object, ByVal e As EventArgs)
+        ' Calculate missing dimension
+        Dim aspectRatio As Double = aspectRatio1.Value / aspectRatio2.Value
         If dimensionW.Text = "" Then
             dimensionW.Text = Math.Round(dimensionH.Value * aspectRatio).ToString()
         Else
             dimensionH.Text = Math.Round(dimensionW.Value / aspectRatio).ToString()
         End If
+    End Sub
+
+    Private Sub calculateButton_ClickW(ByVal sender As Object, ByVal e As EventArgs)
+        ' Calculate missing dimension
+        Dim aspectRatio As Double = aspectRatio1.Value / aspectRatio2.Value
+        dimensionH.Text = Math.Round(dimensionW.Value / aspectRatio).ToString()
+        Clipboard.SetText(Math.Round(dimensionW.Value / aspectRatio).ToString())
+    End Sub
+	
+    Private Sub calculateButton_ClickH(ByVal sender As Object, ByVal e As EventArgs)
+        ' Calculate missing dimension
+        Dim aspectRatio As Double = aspectRatio1.Value / aspectRatio2.Value
+        dimensionW.Text = Math.Round(dimensionH.Value * aspectRatio).ToString()
+        Clipboard.SetText(Math.Round(dimensionH.Value * aspectRatio).ToString())
     End Sub
 
     ' closeButton
