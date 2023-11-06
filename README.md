@@ -2,15 +2,17 @@
 ### A portable app (size=~50KB) to calculate the correct width or height based on aspect ratio. 
 
 ## Screenshots
-![screen1 4](https://github.com/amymor/DiCalc-Dimension-Calculator/assets/54497554/508f2c14-a302-4f91-a98e-a0946efbad88)
+![screen1 5](https://github.com/amymor/DiCalc-Dimension-Calculator/assets/54497554/93c5f10c-13b9-4700-903c-9ed847718236)
 
 
 <details><summary>Old versions</summary>
 
+### v1.2-v1.4
+![screen1 4](https://github.com/amymor/DiCalc-Dimension-Calculator/assets/54497554/508f2c14-a302-4f91-a98e-a0946efbad88)
 ### v1.1
 ![screenv1 1](https://github.com/amymor/DiCalc-Dimension-Calculator/assets/54497554/b9c4a6df-c706-4e3c-8469-befd830bcbee)
 ### v1.0
-  ![screenv1 0](https://github.com/amymor/DiCalc-Dimension-Calculator/assets/54497554/7e0735c1-c4d7-417e-b0d1-f6553df0f16f)
+![screenv1 0](https://github.com/amymor/DiCalc-Dimension-Calculator/assets/54497554/7e0735c1-c4d7-417e-b0d1-f6553df0f16f)
 
   
 </details>
@@ -52,11 +54,10 @@ the blow result will be copied to the clipboard:
 - [x] ~~Add a button to open GitHub app web page to check for updates.~~
 - [x] ~~A bit better UI and colors.~~
 - [x] ~~Auto round the result instead of showing decimals.~~
-- [ ] Add a button to show decimals.
 - [ ] Add an option to make the window topmost.
 - [x] ~~Add command-line parameters.~~
 - [x] ~~Add an option to auto calculate.~~
 - [x] ~~Add up and down buttons to TextBox (change TextBox to NumericUpDown).~~
 - [ ] Store some settings like default aspect ratio in an ini file.
 - [x] ~~An option to auto-copy the result to clipboard.~~
-- [ ] A button before each numberic field to copy the value.
+- [x] ~~A button before each numberic field to copy the value.~~
