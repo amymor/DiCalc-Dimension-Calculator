@@ -20,7 +20,7 @@
 #### Metdod A:
 1. Open the app.
 2. Enter your desired aspect ratio (default is 16:9).
-3. Enter "**Pixel width**" only or "**Pixel height**" only.
+3. Enter "**Pixel width**" or "**Pixel height**".
 4. Done! The app will show you the correct width or height and also auto-copy it to the clipboard.
 #### Metdod B:
 1. Open the app.
