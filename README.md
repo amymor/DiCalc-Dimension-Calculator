@@ -27,7 +27,7 @@
 #### Metdod B:
 1. Open the app.
 2. Enter your desired aspect ratio (default is 16:9).
-3. Drag and drop an image file to app window.
+3. Drag and drop an image file to the window.
 5. Done! The app will show you the correct width and height and also auto-copy it to the clipboard.
 
 ### DiCalc-CL (Command line)
