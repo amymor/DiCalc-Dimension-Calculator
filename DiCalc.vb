@@ -59,12 +59,33 @@ Public Class Form1
                                                        Dim aspectRatio As Double = aspectRatio1.Value / aspectRatio2.Value
                                                        dimensionH.Text = Math.Round(dimensionW.Value / aspectRatio)
                                                        Clipboard.SetText(Math.Round(dimensionW.Value / aspectRatio))
+            ' Calculate megapixel
+            Megapixel.Value = (dimensionW.Value * dimensionH.Value) / 1000000
                                                    End Sub)
 	Dim dimensionH As New CustomNumericUpDown(Sub()
                                                        Dim aspectRatio As Double = aspectRatio1.Value / aspectRatio2.Value
                                                        dimensionW.Text = Math.Round(dimensionH.Value * aspectRatio)
                                                        Clipboard.SetText(Math.Round(dimensionH.Value * aspectRatio))
+            ' Calculate megapixel
+            Megapixel.Value = (dimensionW.Value * dimensionH.Value) / 1000000
                                                    End Sub)
+Dim megapixel As New CustomNumericUpDown(Sub()                                 
+                                                       Dim megapixelValue As Long = Megapixel.Value *1000000 ' This is in megapixels
+                                                       ' Define the aspect ratio
+                                                       Dim aspectRatio As Double = aspectRatio1.Value / aspectRatio2.Value
+                                                       ' Choose either width or height as the primary dimension
+                                                       ' Here, we choose width as the primary dimension
+                                                       Dim primaryDimension As Double = Math.Sqrt(megapixelValue * aspectRatio)
+                                                       ' Calculate the secondary dimension using the aspect ratio
+                                                       Dim secondaryDimension As Double = primaryDimension / aspectRatio
+                                                       ' Round the dimensions to the nearest whole number
+                                                       Dim roundedPrimaryDimension As Integer = CInt(Math.Round(primaryDimension))
+                                                       Dim roundedSecondaryDimension As Integer = CInt(Math.Round(secondaryDimension))
+                                                       ' Assign the calculated dimensions to the controls
+                                                       dimensionW.Text = roundedPrimaryDimension.ToString()
+                                                       dimensionH.Text = roundedSecondaryDimension.ToString()
+                                                   End Sub)
+
     Private aspectRatio1 As New NumericUpDown()
     Private aspectRatio2 As New NumericUpDown()
     ' Private dimensionW As New NumericUpDown()
@@ -81,6 +102,7 @@ Public Class Form1
     Private ratioHeightLabel As New Label()
     Private pixelsWidthLabel As New Label()
     Private pixelsHeightLabel As New Label()
+    Private MegapixelLabel As New Label()
 
     Public Sub New()
         ' Set form properties
@@ -91,7 +113,7 @@ Public Class Form1
 		' Me.FormBorderStyle = FormBorderStyle.FixedToolWindow
 		' Me.showintaskbar = False
 		Me.ControlBox = False
-		Me.Size = New Size(220, 190)
+		Me.Size = New Size(220, 185)
 		' Me.Text = "=)"
 		Me.Text = "DiCalc - amymor OgomnamO"
         Me.BackColor = Color.FromArgb(60,75,66)
@@ -103,10 +125,16 @@ Public Class Form1
         ' Initialize Labels
         AspectRatioLabel.Text = "Aspect ratio"
         AspectRatioLabel.Location = New Point(18, 0)
-        AspectRatioLabel.Size = New Size(100, 30)
+        AspectRatioLabel.Size = New Size(95, 30)
         AspectRatioLabel.Font = New Font("Segoe UI", 12) ' Set font size
         AspectRatioLabel.ForeColor = Color.FromArgb(238,190,123) ' Set text color
-		
+
+        MegapixelLabel.Text = "Megapixel"
+        MegapixelLabel.Location = New Point(135, 55)
+        MegapixelLabel.Size = New Size(95, 22)
+        MegapixelLabel.Font = New Font("Segoe UI", 12) ' Set font size
+        MegapixelLabel.ForeColor = Color.FromArgb(238,100,100) ' Set text color
+
         ' ratioWidthLabel.Text = "Ratio width"
         ' ratioWidthLabel.Location = New Point(140, 10)
         ' ratioWidthLabel.Size = New Size(100, 25)
@@ -115,7 +143,7 @@ Public Class Form1
         ' ratioHeightLabel.Location = New Point(140, 40)
         ' ratioHeightLabel.Size = New Size(100, 25)
         ' ratioHeightLabel.Font = New Font("Segoe UI", 12) ' Set font size
-		
+
         ' pixelsWidthLabel.Text = "W"
         ' pixelsWidthLabel.Location = New Point(5, 82)
         ' pixelsWidthLabel.Size = New Size(100, 25)
@@ -169,10 +197,22 @@ Public Class Form1
         ' dimensionW.Controls("UpDownButtons").ForeColor = Color.White
         ' dimensionH.Controls("UpDownButtons").BackColor = Color.DarkGray
         ' dimensionH.Controls("UpDownButtons").ForeColor = Color.White
-		
+
+        ' Initialize Megapixel NumericUpDown
+        Megapixel.Location = New Point(140, 80) ' Adjust the position as needed
+        Megapixel.Size = New Size(70, 20)
+        Megapixel.Font = New Font("Segoe UI", 12) ' Set font size
+        Megapixel.BackColor = Color.FromArgb(54,69,60) ' Set background color
+        Megapixel.ForeColor = Color.FromArgb(235,235,235) ' Set text color
+        Megapixel.BorderStyle = BorderStyle.FixedSingle
+
+        ' Set DecimalPlaces to 2 to display two decimal places
+        Megapixel.DecimalPlaces = 2
+
         ' maximum value of the data type
         dimensionW.Maximum = 9999999
         dimensionH.Maximum = 9999999
+        Megapixel.Maximum = 99999
 ' =================================================================
         ' Initialize Buttons
         ' calculateButton.Text = "Calculate"
@@ -207,22 +247,22 @@ Public Class Form1
         minimizeButton.FlatAppearance.BorderSize = 1
 
         ' openWebsiteButton1.Text = "ℹ"
-        ' openWebsiteButton1.Text = "v1.5"
+        ' openWebsiteButton1.Text = "v1.6"
         AddHandler openWebsiteButton1.Paint, Sub(sender As Object, e As PaintEventArgs)
                                                              ' Calculate the bounds of the text
                                                              Dim bounds As New Rectangle(New Point(0, 0), openWebsiteButton1.Size)
 
                                                              ' Draw the text on the button
-                                                             TextRenderer.DrawText(e.Graphics, "v1.5", openWebsiteButton1.Font, bounds, openWebsiteButton1.ForeColor, TextFormatFlags.SingleLine)
+                                                             TextRenderer.DrawText(e.Graphics, "v1.6", openWebsiteButton1.Font, bounds, openWebsiteButton1.ForeColor, TextFormatFlags.SingleLine)
                                                              End Sub
-        openWebsiteButton1.Location = New Point(182, 142)
-        openWebsiteButton1.Size = New Size(32, 18)
+        openWebsiteButton1.Location = New Point(117, 0)
+        openWebsiteButton1.Size = New Size(34, 18)
         ' openWebsiteButton1.Font = New Font("Segoe UI black", 24, FontStyle.Bold) ' Set font size
         openWebsiteButton1.Font = New Font("Tahoma", 10) ' Set font size
         ' openWebsiteButton1.Padding = New Padding(0, 0, 0, 0)
         ' openWebsiteButton1.TextAlign = ContentAlignment.MiddleCenter
         openWebsiteButton1.ForeColor = Color.Aquamarine
-        ' openWebsiteButton1.BackColor = Color.FromArgb(60,66,75)
+        openWebsiteButton1.BackColor = Color.FromArgb(40,46,56)
         openWebsiteButton1.FlatStyle = FlatStyle.Flat
         openWebsiteButton1.FlatAppearance.BorderColor = Color.FromArgb(100,100,100)
         openWebsiteButton1.FlatAppearance.BorderSize = 1
@@ -234,6 +274,7 @@ Public Class Form1
         Me.Controls.Add(dimensionW)
         Me.Controls.Add(dimensionH)
         Me.Controls.Add(AspectRatioLabel)
+        Me.Controls.Add(MegapixelLabel)
         ' Me.Controls.Add(ratioWidthLabel)
         ' Me.Controls.Add(ratioHeightLabel)
         ' Me.Controls.Add(pixelsWidthLabel)
@@ -244,6 +285,8 @@ Public Class Form1
 		Me.Controls.Add(openWebsiteButton1)
 		' Me.Controls.Add(openWebsiteButton2)
 
+		' Add Megapixel to Form
+		Me.Controls.Add(Megapixel)
 ' =================================================================
 		Dim CopyButtonW As New Button
 		Dim CopyButtonH As New Button
@@ -270,11 +313,11 @@ Public Class Form1
         CopyButtonH.FlatAppearance.BorderSize = 1
 
         ' CopyButtonALL.Text = "📋"
-        CopyButtonALL.Location = New Point(140, 93)
-        CopyButtonALL.Size = New Size(35, 41)
+        CopyButtonALL.Location = New Point(140, 115)
+        CopyButtonALL.Size = New Size(35, 30)
         ' CopyButtonALL.Font = New Font("Segoe UI", 10) ' Set font size
         ' CopyButtonALL.ForeColor = Color.FromArgb(151,215,151)
-        CopyButtonALL.BackColor = Color.FromArgb(60,66,75)
+        CopyButtonALL.BackColor = Color.FromArgb(70,60,170)
         CopyButtonALL.FlatStyle = FlatStyle.Flat
         CopyButtonALL.FlatAppearance.BorderColor = Color.FromArgb(100,100,100)
         CopyButtonALL.FlatAppearance.BorderSize = 1
@@ -297,9 +340,9 @@ Public Class Form1
         ' Create an array to hold the handle of the extracted icon
         Dim phiconLarge(0) As IntPtr
         Dim phiconSmall(0) As IntPtr
-        ' Extract the icon from shell32.dll
+        ' Extract the icon from mmcndmgr.dll
         Dim iconCopyButtonALL1 As UInteger = WindowsApi.ExtractIconExW("C:\Windows\System32\mmcndmgr.dll", -30518, phiconLarge(0), phiconSmall(0), 1)
-        Dim iconCopyButtonALL2 As Icon = Icon.FromHandle(phiconLarge(0))
+        Dim iconCopyButtonALL2 As Icon = Icon.FromHandle(phiconSmall(0))
         Dim iconCopyButtonALL3 As Bitmap = iconCopyButtonALL2.ToBitmap()
         ' Set the Icon object as the button's image
         CopyButtonALL.Image = iconCopyButtonALL3
@@ -310,11 +353,11 @@ Public Class Form1
         ' DeleteButton.Text = "⬇️"
         ' DeleteButton.Text = "⟳"
         ' DeleteButton.Text = "🧹"
-        DeleteButton.Location = New Point(174, 93)
-        DeleteButton.Size = New Size(35, 41)
-        DeleteButton.Font = New Font("Segoe UI", 24, FontStyle.Bold) ' Set font size
+        DeleteButton.Location = New Point(174, 115)
+        DeleteButton.Size = New Size(35, 30)
+        ' DeleteButton.Font = New Font("Segoe UI", 24, FontStyle.Bold) ' Set font size
         ' DeleteButton.ForeColor = Color.FromArgb(151,215,151)
-        DeleteButton.BackColor = Color.FromArgb(60,66,75)
+        DeleteButton.BackColor = Color.FromArgb(120,40,40)
         DeleteButton.FlatStyle = FlatStyle.Flat
         DeleteButton.FlatAppearance.BorderColor = Color.FromArgb(100,100,100)
         DeleteButton.FlatAppearance.BorderSize = 1
@@ -327,12 +370,14 @@ Public Class Form1
                                         dimensionH.value = 0
                                         dimensionW.text = ""
                                         dimensionH.text = ""
+                                        Megapixel.value = 0
+                                        Megapixel.text = "0"
                                     End Sub
 ' --------------------------------------------------------------------
         ' Create an array to hold the handle of the extracted icon
-        ' Extract the icon from wmploc.dll
-        Dim iconDeleteButton1 As UInteger = WindowsApi.ExtractIconExW("C:\Windows\System32\wmploc.dll", -29607, phiconLarge(0), phiconSmall(0), 1)
-        Dim iconDeleteButton2 As Icon = Icon.FromHandle(phiconLarge(0))
+        ' Extract the icon from shell32.dll
+        Dim iconDeleteButton1 As UInteger = WindowsApi.ExtractIconExW("C:\Windows\System32\shell32.dll", -32, phiconLarge(0), phiconSmall(0), 1)
+        Dim iconDeleteButton2 As Icon = Icon.FromHandle(phiconSmall(0))
         Dim iconDeleteButton3 As Bitmap = iconDeleteButton2.ToBitmap()
         ' Set the Icon object as the button's image
         DeleteButton.Image = iconDeleteButton3
@@ -347,6 +392,7 @@ Public Class Form1
 		dimensionH.text = ""
 		' dimensionW.Value = 0
 		' dimensionH.Value = 0
+		Megapixel.text = "0"
 
 		' focus to the TextBox at startup
 		' dimensionW.Select()
@@ -360,7 +406,8 @@ Public Class Form1
 		toolTip1.SetToolTip(CopyButtonW, "Copy Width to the clipboard")
 		toolTip1.SetToolTip(CopyButtonH, "Copy Height to the clipboard")
 		toolTip1.SetToolTip(CopyButtonALL, "Copy Width and Height to the clipboard")
-		toolTip1.SetToolTip(DeleteButton, "Clear Width and Height")
+		toolTip1.SetToolTip(DeleteButton, "Clear")
+		' toolTip1.SetToolTip(Megapixel, "Megapixel")
 
 ' Add event handler =============================================
         ' AddHandler calculateButton.Click, AddressOf calculateButton_Click
@@ -375,7 +422,7 @@ Public Class Form1
 		' Add ValueChanged event handlers to NumericUpDown controls
         AddHandler aspectRatio1.ValueChanged, AddressOf aspectRatio1_ValueChanged
         AddHandler aspectRatio2.ValueChanged, AddressOf aspectRatio2_ValueChanged
-		
+
 		' Add TextChanged  event handlers to NumericUpDown controls (to make field empty while using KeyUp)
         AddHandler dimensionW.TextChanged , AddressOf calculateButton_TextChangedW
         AddHandler dimensionH.TextChanged , AddressOf calculateButton_TextChangedH
@@ -383,7 +430,8 @@ Public Class Form1
         ' Add KeyUp event handlers to NumericUpDown controls
         AddHandler dimensionW.KeyUp, AddressOf calculateButton_KeyUpW
         AddHandler dimensionH.KeyUp, AddressOf calculateButton_KeyUpH
-		
+        AddHandler Megapixel.KeyUp, AddressOf Megapixel_KeyUp
+
         ' Add KeyDown event handlers to NumericUpDown controls (to Enable Ctrl+A in NumericUpDown field)
         AddHandler dimensionW.KeyDown, AddressOf dimension_KeyDownW
         AddHandler dimensionH.KeyDown, AddressOf dimension_KeyDownH
@@ -454,11 +502,15 @@ Public Class Form1
     Private Sub aspectRatio1_ValueChanged(ByVal sender As Object, ByVal e As EventArgs)
 		 Dim aspectRatio As Double = aspectRatio1.Value / aspectRatio2.Value
         dimensionW.Text = Math.Round(dimensionH.Value * aspectRatio)
+            ' Calculate megapixel
+            Megapixel.Value = (dimensionW.Value * dimensionH.Value) / 1000000
 	End Sub
 
     Private Sub aspectRatio2_ValueChanged(ByVal sender As Object, ByVal e As EventArgs) 
         Dim aspectRatio As Double = aspectRatio1.Value / aspectRatio2.Value
         dimensionH.Text = Math.Round(dimensionW.Value / aspectRatio)
+            ' Calculate megapixel
+            Megapixel.Value = (dimensionW.Value * dimensionH.Value) / 1000000
     End Sub
 
     ' Private Sub calculateButton_ClickW(ByVal sender As Object, ByVal e As EventArgs) 
@@ -480,6 +532,8 @@ Public Class Form1
             Dim aspectRatio As Double = aspectRatio1.Value / aspectRatio2.Value
             dimensionH.Text = Math.Round(dimensionW.Value / aspectRatio)
             Clipboard.SetText(Math.Round(dimensionW.Value / aspectRatio))
+            ' Calculate megapixel
+            Megapixel.Value = (dimensionW.Value * dimensionH.Value) / 1000000
         End If
     End Sub
 
@@ -490,8 +544,29 @@ Public Class Form1
             Dim aspectRatio As Double = aspectRatio1.Value / aspectRatio2.Value
             dimensionW.Text = Math.Round(dimensionH.Value * aspectRatio)
             Clipboard.SetText(Math.Round(dimensionH.Value * aspectRatio))
+            ' Calculate megapixel
+            Megapixel.Value = (dimensionW.Value * dimensionH.Value) / 1000000
         End If
     End Sub
+
+    Private Sub Megapixel_KeyUp(ByVal sender As Object, ByVal e As KeyEventArgs)                                 
+	    Dim megapixelValue As Long = Megapixel.Value *1000000 ' This is in megapixels
+	    ' Define the aspect ratio
+	    Dim aspectRatio As Double = aspectRatio1.Value / aspectRatio2.Value
+	    ' Choose either width or height as the primary dimension
+	    ' Here, we choose width as the primary dimension
+	    Dim primaryDimension As Double = Math.Sqrt(megapixelValue * aspectRatio)
+	    ' Calculate the secondary dimension using the aspect ratio
+	    Dim secondaryDimension As Double = primaryDimension / aspectRatio
+	    ' Round the dimensions to the nearest whole number
+	    Dim roundedPrimaryDimension As Integer = CInt(Math.Round(primaryDimension))
+	    Dim roundedSecondaryDimension As Integer = CInt(Math.Round(secondaryDimension))
+	    ' Assign the calculated dimensions to the controls
+	    dimensionW.Text = roundedPrimaryDimension.ToString()
+	    dimensionH.Text = roundedSecondaryDimension.ToString()
+    End Sub
+
+
 
 ' to make field empty while using KeyUp =================================================
     Private Sub calculateButton_TextChangedW(ByVal sender As Object, ByVal e As EventArgs)
