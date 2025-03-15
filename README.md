@@ -58,6 +58,6 @@ the blow result will be copied to the clipboard:
 - [x] ~~Add command-line parameters.~~
 - [x] ~~Add an option to auto calculate.~~
 - [x] ~~Add up and down buttons to TextBox (change TextBox to NumericUpDown).~~
-- [x] Store some settings like default aspect ratio in an ini file.
+- [ ] Store some settings like default aspect ratio in an ini file.
 - [x] ~~An option to auto-copy the result to clipboard.~~
 - [x] ~~A button before each numberic field to copy the value.~~
